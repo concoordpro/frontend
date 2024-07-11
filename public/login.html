@@ -37,23 +37,23 @@
 									style="vertical-align: middle; margin-top: -5px;">
 								CONCOORD
 							</h1>
-<br>
-						
+							<br>
+
 						</div>
-						
+
 						<div class="border-secondary mb-3">
 							<div class="card-header">
 								<div class="m-sm-3">
 									<form>
-										
-										
+
+
 										<div class="mb-3">
 											<div id="alerta" class="alert-message text-white" style="display: none;">
 												<span id="textoalerta">alerta escrito Aqui</span>
 												<button type="button" class="btn-close" data-bs-dismiss="alert"
 													aria-label="Close" onclick="closemsgbox()"></button>
 											</div>
-											<label class="h6 text-muted">Matricula</label>
+											<label class="h6 text-muted">Matricula do Abestado</label>
 											<input id="matricula" class="form-control form-control-lg" type="text"
 												name="matricula" placeholder="Informe a Matrícula"
 												onkeydown="enterMatricula(event)" />
@@ -67,8 +67,8 @@
 										<div>
 										</div>
 										<div class="mb-4 m-sm-1">
-											<span class="h6 form-check-label text-muted"> Ao clicar em login, você aceita os <a
-													href="termos.html">Termos de Uso.</a></span>
+											<span class="h6 form-check-label text-muted"> Ao clicar em login, você
+												aceita os <a href="termos.html">Termos de Uso.</a></span>
 										</div>
 										<div class="d-grid gap-2 mt-3">
 											<a class="align-items-center justify-content-center d-flex btn btn-lg btn-login btn-primary"
@@ -90,7 +90,7 @@
 								decisões.
 							</h7>
 						</div>
-					
+
 						<div class="text-center mb-3 m-sm-4">
 							<h7>Desenvolvimento: Alex Luis Oliveira da Silva - SE/PE</h6>
 						</div>
@@ -110,6 +110,19 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
+
+			const firebaseFunctionURL = 'https://us-central1-concoord15.cloudfunctions.net/app';
+			
+			axios.get(`${firebaseFunctionURL}/hello`)
+			.then(function (response) {
+				console.log(response.data)
+
+			})
+			.catch(function (error) {
+
+				console.error(error);
+				alert("Ocorreu um erro no servidor. Tente novamente.");
+			});
 
 	function efetuarLogin() {
 
@@ -150,7 +163,7 @@
 				alert("Ocorreu um erro no servidor. Tente novamente.");
 			});
 
-
+			
 	}
 </script>
 
