@@ -17,7 +17,7 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.CHAVE_FIREBASE }}'
           projectId: '${{ secrets.ID_PROJETO }}'
-          tag: 'v1.2.3'  # Adicione o nome da versão aqui
+          expires: 1d
 
 
 
