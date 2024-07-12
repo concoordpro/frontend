@@ -104,9 +104,9 @@
 
 <script>
 
-	const firebaseFunctionURL = 'https://us-central1-concoord15.cloudfunctions.net/app';
+	const server = 'https://us-central1-concoord15.cloudfunctions.net/app';
 
-	axios.get(`${firebaseFunctionURL}/hello`)
+	axios.get(`${server}/hello`)
 		.then(function (response) {
 			console.log(response.data)
 
@@ -130,7 +130,7 @@
 		};
 
 		// REQUISIÇÃO POST COM AXIOS
-		axios.post('../Login', data)
+		axios.post(`${server}/Login`, data)
 			.then(function (response) {
 				const matricula = data.matricula;
 				const nome = escreverUsuario(response.data);
