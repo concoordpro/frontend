@@ -12,8 +12,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm install
-      - uses:  firebase deploy@v0
+      - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.CHAVE_FIREBASE }}'
           projectId: '${{ secrets.ID_PROJETO }}'
+          tag: 'v1.2.3'  # Adicione o nome da versão aqui
+
+
+
