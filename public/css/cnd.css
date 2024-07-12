@@ -17,7 +17,7 @@ Body {
     font-family: 'Roboto', sans-serif;
     /*font-size: 90%;*/
     font-style: inherit;
-    background-image: url('/public/img/bkg/background.png');
+    background-image: url('../img/bkg/background.png');
     background-size: cover;
     background-repeat: no-repeat;
 
@@ -25,7 +25,7 @@ Body {
 
 .subbody {
 
-    background-image: url('/public/img/bkg/subbackground.png');
+    background-image: url('../img/bkg/subbackground.png');
     background-size: cover;
     background-repeat: no-repeat;
 
@@ -33,7 +33,7 @@ Body {
 
 .subbody1 {
 
-    background-image: url('/public/img/bkg/subbackground1.png');
+    background-image: url('../img/bkg/subbackground1.png');
     
 }
 
