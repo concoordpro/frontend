@@ -17,8 +17,8 @@ Body {
     font-family: 'Roboto', sans-serif;
     font-style: inherit;
     background-image: url('https://concoord15.web.app/img/bkg/background.png');
-    background-size: cover;
-    background-repeat: no-repeat;
+    /*background-size: cover;
+    background-repeat: no-repeat;*/
 
 }
 
