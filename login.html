@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Projeto Concoord Web - Versão do Sistema : 15.0.3">
+	<meta name="author" content="Alex Luis Oliveira da Silva">
+	<meta name="keywords" content="Correios Empresas, Concoord, CEM Recife">
+
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="shortcut icon" href="img/icons/icon-logo-48x48.png" />
+
+	<title>Concoord 15.0.0</title>
+
+	<link href="css/app.css" rel="stylesheet">
+	<link href="css/cnd.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+
+</head>
+
+<body
+	style="font-family: 'Roboto', sans-serif; font-style: inherit; background-image: url('https://concoord15.web.app/img/bkg/background.png'); background-size: cover; background-repeat: no-repeat;">
+
+	<main class="d-flex w-100">
+
+		<div class="container d-flex flex-column">
+			<div class="row vh-100">
+				<div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 mx-auto d-table h-100">
+					<div class="d-table-cell align-middle">
+
+						<div class="text-center mt-4">
+							<img class="htitulo logotopo mb-2" src="img/icons/logo-concoord.svg" alt="">
+						</div>
+
+						<div class="border-secondary mb-3">
+							<div class="card-header">
+								<div class="m-sm-3">
+									<form>
+
+
+										<div class="controls-login">
+											<div id="alerta" class="alert-message text-white" style="display: none;">
+												<span id="textoalerta">alerta escrito Aqui</span>
+												<button type="button" class="btn-close" data-bs-dismiss="alert"
+													aria-label="Close" onclick="closemsgbox()"></button>
+											</div>
+											<label class="h6 text-muted">Matricula</label>
+											<input id="matricula" class="form-control form-control-lg" type="text"
+												name="matricula" placeholder="Informe a Matrícula"
+												onkeydown="enterMatricula(event)" />
+										</div>
+										<div class="mb-3 controls-login">
+											<label class="h6 text-muted">Senha de Rede</label>
+											<input id="senha" class="form-control form-control-lg" type="password"
+												name="password" placeholder="Informe a senha de rede"
+												onkeydown="enterSenha(event)" />
+										</div>
+										<div>
+										</div>
+										<div class="mb-4 m-sm-1 col-10 controls-login">
+											<span class="h6 form-check-label text-muted"> Ao clicar em login, você
+												aceita os <a href="termos.html">Termos de Uso.</a></span>
+										</div>
+										<div class="d-grid gap-2 mt-3 controls-login">
+											<a class="align-items-center justify-content-center d-flex btn btn-lg btn-login btn-primary"
+												disabled="true;" onclick="efetuarLogin()">Login</a>
+										</div>
+										<br>
+
+									</form>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="text-center mb-4 m-sm-1">
+							<h7>Bem-vindo ao CONCOORD, solução abrangente para CONtrole COORDenado de Operações e
+								Resultados.
+								O sistema utiliza análise de dados para fornecer insights e facilitar a tomada de
+								decisões.
+							</h7>
+						</div>
+
+						<div class="text-center mb-3 m-sm-4">
+							<h7>Desenvolvimento: Alex Luis Oliveira da Silva - SE/PE</h6>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</main>
+
+</body>
+
+</html>
+
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+
+	const server = 'https://us-central1-concoord15.cloudfunctions.net/app';
+
+	function efetuarLogin() {
+
+		adicionarOverlay();
+
+		var matricula = document.getElementById("matricula").value;
+		var senha = document.getElementById("senha").value;
+
+		var data = {
+			matricula: matricula,
+			senha: senha
+		};
+
+		const url = 'https://meucorreios.correios.com.br/app/login'; // URL para a qual você deseja enviar a requisição
+		const username = document.getElementById("matricula").value; // Seu nome de usuário
+		const password = document.getElementById("senha").value; // Sua senha
+
+		axios.post(url, {
+			username,
+			password,
+			execution: 'fe027d25-e6a1-40cb-b16b-2dc56f26fd41_ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0lzSW10cFpDSTZJalZtT0dVelpEbGpMV1U0Wm1JdE5HVXlOQzA1WVdWaExUSTBOVEZoWlRRMk1UTTFOaUo5LjZoY0o4a0c5QzNYaFlYaXRlMEFOZzEzMVRGbDFHdjhTY3Jhakhlbk92RTAwby1ja3ByT0liZ2I4Zy1xVGFaUzNwOTlnTEdkVllxMklieTdZb055cmxES3Z2UUliZFZfTi1IcWpUWFZkVGdLRHlMaDNLSW53VUp1R0k0UHIyeHljTGxPSmFGd2xtSXQyX3Q0UWpiTTdRYXdEZ2VnYjV1OWJ2TkxkTmVLbjNCQWYycnV1SFAzWklGN2dxLWZYX1NLZnVfRTlQZVVJVDNnMjYyY2RvZzRXVmh1N0RBRHFMYlFpSFdGZERGZmFhSWZjWFBSWlJFSjVXVlpaZXFzcTgtVE5mUmZDTmxwTk10TkpnV1JLMmtXX2dvMUVVdmUxTFdBbHZ3cWVTS3E4U2V5ZGNjUDZoMXlkSXA4RGdKRFVGeGFOWFRFZ3NRazlBeV8zQ1p4dVdIM1VrZmZoaHpGYl9INUd0NmN6azZSVW52M1hjcXhDSTV0ajZJbFE0aE9oMkRGUEdOOUtYOFJ3RGhKTkJyc3JWYmFPWDJfQVN6cVhVblUzRk1JbklHSS05RVlEOGQ4MEpmZk1fcjdvNzVyb1lJT2R6eVdiUHJTdlU4M1ZpYlJLeFJpcC1sZTFvSDhMSUpDQmU1alowTk0tM2Z6WWtqa01oNWJGRHhvb243YmEwakhnNy14ZHF2UnVUNHNoTTJhVzJOVFBFbVp1NjVzS1dzVXZFTWVpaXpQZkpOTXAwNEw5R20waFNSY1czWUNYb3J5SVQyazloU2ZoZ241WmpkZk5FWG1FTDFadUtiak8xclBiQmFNcFJwblR4WHJ2emhVV185V2VTMlFxbkNQVVRhbVF2cEZrQ1J0VmVPZkU2cXpjcnVsdzBzVlVHVjhiT2hucXgxVVVOTnB3N2R3ZmJxLVQ1VXU1RzNDNlpfYlJwVWdVR01fb2F5NkRIVGRiVUl5TU9raUI5UkhUSUoyMmxseEtWTHdLRlZMa2hIcTM5QnN5WmotSk4xcG44MUc2QU9Ra180d0tSb1RzUUhia1M5S3lKcWRsVDlab2p4UEwyNUpialpNaDVuTVo5UDVVUjFjbVFxVDJwOTRTS042YUYzVVFCVERIbDVxR2hyWVpMeUN0UzdJSnUtOTN6X0hXWlcxQUNUUXV4REY1eU5vSG4xMzFDc0pUX3o2eU93cVh1YXJKSTZmYlNPSE1kVGFkWExzNk5hMlFFZnhEamgtczVQQjNBUF9oZG9wbzhiQlh2VUZLeS0xSmdOaDFOTnRWN0YyVjJkbEVtV1lUaXgyaGFEMWo2X1BYUGllMTY5TzZqemRIUHZfeXFubGF2bndVNUljaElaaEdaVWUxclVwbE5mR1Fud05SejEyckZWYlhNdjk2d0RqdU9xcFd1cDhDcjNURFBOSGt1TGxWRkROSVI1WFhFdVNrWkdPQmEyTWk4cFVGOHBPTGpoQ3BVMDQ5dHVvSUxxUk82WlNmOW1vLkJaNDdQdE9DR3FXT0ctYXQyNXFsMkpDb3RzOXdXUnpJWktBclkwTlEzcVJSbm1hSTFsWjZlWVJfQUthR0pjVW5OQ0NsV1dkX0RCM21vNS1mZmhVemJB'
+		}
+		)
+			.then(response => {
+				console.log(response);
+			})
+			.catch(error => {
+				console.error(error);
+			});
+			
+		// REQUISIÇÃO POST COM AXIOS
+		/*axios.post(`${server}/Login`, data)
+			.then(function (response) {
+				const matricula = data.matricula;
+				const nome = escreverUsuario(response.data);
+				const setor = escreverSetor(response.data);
+				const mcu = escreverMcu(response.data);
+				sessionStorage.setItem("matricula", matricula);
+				sessionStorage.setItem("nome", nome);
+				sessionStorage.setItem("setor", setor);
+				sessionStorage.setItem("mcu", mcu);
+
+				if (typeof nome !== 'undefined' && nome !== null) {
+					window.location.href = "index.html";
+				} else {
+					msgbox('Usuário ou senha incorreto(a).')
+				}
+
+				removerOverlay();
+
+			})
+			.catch(function (error) {
+
+				console.error(error);
+				alert("Ocorreu um erro no servidor. Tente novamente.");
+			});*/
+
+
+	}
+</script>
+
+<script>
+
+	//ADICIONAR OVERLAY
+	function adicionarOverlay() {
+		var overlay = document.createElement('div');
+		overlay.id = 'loading-overlay';
+		overlay.className = 'overlay';
+
+		var loader = document.createElement('div');
+		loader.id = 'loader';
+		loader.className = 'loader';
+		overlay.appendChild(loader);
+
+		var loadingMessage = document.createElement('div');
+		loadingMessage.id = 'loading-message';
+		loadingMessage.innerHTML = '&nbsp; Verificando usuário...';
+		overlay.appendChild(loadingMessage);
+
+		document.body.appendChild(overlay);
+	}
+
+	// REMOVER OVERLAY
+	function removerOverlay() {
+		var overlay = document.getElementById('loading-overlay');
+		if (overlay) {
+			document.body.removeChild(overlay);
+		}
+	}
+
+</script>
+
+<script>
+
+	function escreverUsuario(usuario) {
+		const linhas = usuario.split('\n');
+		let nome = null;
+
+		if (linhas[0].includes("Sucesso ao se logar")) {
+
+			for (let i = 0; i < linhas.length; i++) {
+				if (linhas[i].includes("nome")) {
+					nome = deColchetes(linhas[i]);
+				}
+			}
+		}
+
+		return nome;
+	}
+
+	function escreverSetor(usuario) {
+		const linhas = usuario.split('\n');
+		let setor = null;
+
+		if (linhas[0].includes("Sucesso ao se logar")) {
+
+			for (let i = 0; i < linhas.length; i++) {
+				if (linhas[i].includes("departamento")) {
+					setor = deColchetes(linhas[i]);
+				}
+			}
+		}
+
+		return setor;
+
+	}
+
+	function escreverMcu(usuario) {
+		const linhas = usuario.split('\n');
+		let mcu = null;
+
+		if (linhas[0].includes("Sucesso ao se logar")) {
+
+			for (let i = 0; i < linhas.length; i++) {
+				if (linhas[i].includes("mcu")) {
+					mcu = deColchetes(linhas[i]);
+				}
+			}
+		}
+
+		return mcu;
+
+	}
+
+	function deColchetes(str) {
+		var regex = /\[(.*?)\]/;
+		var match = regex.exec(str);
+
+		if (match && match.length > 1) {
+			return match[1];
+		} else {
+			return null;
+		}
+	}
+
+
+</script>
+
+<script>
+
+	function enterMatricula(event) {
+		if (event.key === "Enter") {
+			event.preventDefault();
+			document.getElementById("senha").focus();
+		}
+	}
+
+	function enterSenha(event) {
+		if (event.key === "Enter") {
+			event.preventDefault();
+			efetuarLogin();
+		}
+	}
+
+</script>
+
+<script>
+
+	function msgbox(texto) {
+		document.getElementById("textoalerta").innerHTML = texto;
+		document.getElementById("alerta").style.display = "flex";
+	}
+
+	function closemsgbox() {
+		document.getElementById("alerta").style.display = "none";
+	}
+
+</script>
